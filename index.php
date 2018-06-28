@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -7,18 +12,25 @@
               type="text/css">
                
     </head>
-    <body action="pagina2.php" method="POST" bgcolor="#00ffe2">
+    <body bgcolor="#00ffe2">
+        <?php
         
+        if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+       
+        ?>
         <table  width="100%">
             <tr>
              <td> <p align="left"> <h1 id="tamanho"><b> Nome do site</b> </h1> </p> </td>
              <td align="center"> 
                <div align="right">
-                 <form id="tamanho2">
-                    Login: <input type="text" name="login" size="4">
-                    Senha: <input type="password" name="senha" size="4">
+                   <form id="tamanho2" action="validalogin.php" method="POST">
+                    Login: <input type="text" name="login" size="20">
+                    Senha: <input type="password" name="senha" size="6">
                     <input type="submit" name="entrar" value="Entrar"> <br><br>
-                    <a href="cadastro.html" > Não tenho conta </a>
+                    <a href="pagina2.php" > Não tenho conta </a>
                  </form>
            
                 </div>
